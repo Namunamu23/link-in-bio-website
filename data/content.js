@@ -40,8 +40,7 @@ export const content = {
 
   meta: {
     description: "Ani Khidasheli — 2D animator and illustrator.",
-    // TODO set to the real deployed URL once the domain is connected (Stage 10).
-    canonical: "https://REPLACE.example.com/",
+    canonical: "https://aniko.space/",
     ogImage: "assets/img/og-cover.png",
     themeColor: "#E3A3BD",
     locale: "en"

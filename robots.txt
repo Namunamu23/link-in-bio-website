@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# TODO replace REPLACE.example.com with the deployed hostname once live.
-Sitemap: https://REPLACE.example.com/sitemap.xml
+Sitemap: https://aniko.space/sitemap.xml
