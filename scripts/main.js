@@ -48,8 +48,23 @@ for (const account of content.socials.instagram) {
   const avatar = document.createElement("span");
   avatar.className = "modal__avatar";
   avatar.setAttribute("aria-hidden", "true");
-  // TODO: swap for <img src="assets/img/profile.png" alt=""> once the real image is added.
-  avatar.textContent = "IG";
+  // Account initial is the fallback; the profile image (if set) loads over it.
+  const initial =
+    (account.handle || account.label || "").replace(/[^a-z0-9]/gi, "").charAt(0).toUpperCase() || "IG";
+  if (account.avatar) {
+    const img = document.createElement("img");
+    img.src = account.avatar;
+    img.alt = "";
+    img.width = 44;
+    img.height = 44;
+    img.loading = "lazy";
+    img.decoding = "async";
+    // Missing file -> keep the initial instead of a broken image.
+    img.addEventListener("error", () => { avatar.textContent = initial; });
+    avatar.append(img);
+  } else {
+    avatar.textContent = initial;
+  }
 
   const label = document.createElement("span");
   label.className = "modal__label";

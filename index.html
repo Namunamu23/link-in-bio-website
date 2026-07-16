@@ -21,66 +21,40 @@
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="manifest" href="site.webmanifest" />
-  <link rel="preload" href="assets/fonts/gochi-hand.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/darumadrop-one.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="styles/main.css" />
   <script type="module" src="scripts/main.js" defer></script>
 </head>
 <body>
 
-  <!-- Decorative drifting clouds. Purely visual; hidden from AT. -->
+  <!-- Four hand-painted clouds framing the column, one per corner. Purely visual; hidden from AT. -->
   <div class="sky" aria-hidden="true">
-    <svg class="sky__cloud sky__cloud--tl" viewBox="0 0 220 130" xmlns="http://www.w3.org/2000/svg">
-      <path d="M20 80 Q5 62 30 52 Q24 22 60 30 Q78 5 112 22 Q140 8 168 28 Q202 22 200 55 Q222 70 202 88 Q212 108 180 106 Q166 122 134 108 Q104 122 78 106 Q54 116 34 98 Q5 100 20 80 Z"/>
-    </svg>
-    <svg class="sky__cloud sky__cloud--tr" viewBox="0 0 220 130" xmlns="http://www.w3.org/2000/svg">
-      <path d="M28 74 Q10 60 34 46 Q28 18 62 28 Q86 4 118 24 Q152 6 176 30 Q208 24 206 56 Q224 74 200 88 Q206 110 174 106 Q160 120 132 108 Q106 120 82 108 Q54 116 30 98 Q6 90 28 74 Z"/>
-    </svg>
-    <svg class="sky__cloud sky__cloud--bl" viewBox="0 0 220 130" xmlns="http://www.w3.org/2000/svg">
-      <path d="M22 82 Q6 66 28 54 Q22 24 58 32 Q80 8 108 26 Q138 10 164 30 Q198 28 198 58 Q222 72 200 90 Q208 108 178 108 Q160 122 128 108 Q100 120 76 106 Q50 114 30 96 Q6 96 22 82 Z"/>
-    </svg>
-    <svg class="sky__cloud sky__cloud--br" viewBox="0 0 220 130" xmlns="http://www.w3.org/2000/svg">
-      <path d="M24 78 Q8 62 32 50 Q26 22 62 28 Q84 6 114 24 Q142 8 168 28 Q202 22 202 54 Q222 68 202 88 Q214 108 182 108 Q166 122 136 110 Q106 122 82 108 Q54 116 32 98 Q4 98 24 78 Z"/>
-    </svg>
+    <img class="sky__cloud sky__cloud--left"        src="assets/img/cloud-a.png" alt="" width="292" height="245" decoding="async">
+    <img class="sky__cloud sky__cloud--right"       src="assets/img/cloud-d.png" alt="" width="560" height="366" decoding="async">
+    <img class="sky__cloud sky__cloud--lower-left"  src="assets/img/cloud-c.png" alt="" width="560" height="356" decoding="async">
+    <img class="sky__cloud sky__cloud--lower-right" src="assets/img/cloud-b.png" alt="" width="245" height="216" decoding="async">
   </div>
 
   <main>
 
-    <!-- Name in a pale-pink cloud. Text is injected from data/content.js. -->
+    <!-- Name sits inside her painted cloud. Text is injected from data/content.js. -->
     <h1 class="name-cloud">
-      <svg class="name-cloud__svg" viewBox="0 0 400 180" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M32 108
-                 Q10 92 34 74
-                 Q28 42 68 50
-                 Q86 22 128 42
-                 Q158 18 198 40
-                 Q238 18 272 42
-                 Q302 22 336 50
-                 Q374 46 372 82
-                 Q394 100 374 128
-                 Q384 154 350 154
-                 Q332 174 300 162
-                 Q276 178 244 162
-                 Q212 176 178 162
-                 Q142 178 108 162
-                 Q78 172 58 154
-                 Q26 154 34 128
-                 Q10 118 32 108 Z"/>
-      </svg>
-      <span class="name-cloud__name" data-name>Ani Khidasheli</span>
+      <img class="name-cloud__bg" src="assets/img/cloud-main.png" alt="" width="760" height="483" decoding="async" fetchpriority="high">
+      <span class="name-cloud__name" data-name>ANIKO</span>
     </h1>
 
-    <!-- Three drops falling in a staggered loop. Decorative. -->
+    <!-- Three painted drops that gently float down and up (constant size). Decorative. -->
     <div class="rain" aria-hidden="true">
-      <svg class="rain__drop rain__drop--1" viewBox="0 0 20 30" xmlns="http://www.w3.org/2000/svg">
-        <path d="M10 2 C5 13 3 20 4 24 C4 28 7 29 10 29 C13 29 16 28 16 24 C17 20 15 13 10 2 Z"/>
-      </svg>
-      <svg class="rain__drop rain__drop--2" viewBox="0 0 20 30" xmlns="http://www.w3.org/2000/svg">
-        <path d="M10 2 C6 12 3 20 4 24 C4 28 7 29 10 29 C13 29 16 28 16 24 C17 20 14 12 10 2 Z"/>
-      </svg>
-      <svg class="rain__drop rain__drop--3" viewBox="0 0 20 30" xmlns="http://www.w3.org/2000/svg">
-        <path d="M10 2 C5 12 3 21 4 25 C4 28 7 29 10 29 C13 29 16 28 16 25 C17 21 15 12 10 2 Z"/>
-      </svg>
+      <span class="drop drop--left">
+        <img class="drop__f" src="assets/img/drop-left-1.png"  alt="" width="45" height="47"  decoding="async">
+      </span>
+      <span class="drop drop--mid">
+        <img class="drop__f" src="assets/img/drop-mid-1.png"   alt="" width="60" height="56" decoding="async">
+      </span>
+      <span class="drop drop--right">
+        <img class="drop__f" src="assets/img/drop-right-1.png" alt="" width="43" height="45"  decoding="async">
+      </span>
     </div>
 
     <p class="role" data-role>2D Animator</p>
@@ -105,40 +79,12 @@
       </a>
     </div>
 
-    <!-- Two big hand-drawn buttons stacked. -->
+    <!-- Two rounded buttons stacked. -->
     <nav class="big-buttons" aria-label="Primary links">
       <a class="big-btn big-btn--portfolio" data-portfolio href="#" target="_blank" rel="noopener noreferrer">
-        <svg class="big-btn__shape" viewBox="0 0 400 96" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M26 44
-                   Q16 14 58 20
-                   Q104 8 158 16
-                   Q206 6 252 16
-                   Q302 8 340 20
-                   Q380 22 376 48
-                   Q392 76 342 82
-                   Q302 92 250 84
-                   Q198 92 146 84
-                   Q98 92 54 82
-                   Q14 82 26 54
-                   Q22 50 26 44 Z"/>
-        </svg>
         <span class="big-btn__label">Portfolio</span>
       </a>
       <button type="button" class="big-btn big-btn--contact" data-contact aria-label="Contact by email">
-        <svg class="big-btn__shape" viewBox="0 0 400 96" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M28 46
-                   Q14 18 60 22
-                   Q108 10 160 18
-                   Q210 8 258 18
-                   Q306 10 342 22
-                   Q384 22 378 50
-                   Q390 78 340 84
-                   Q300 92 252 84
-                   Q200 92 148 84
-                   Q100 92 56 82
-                   Q16 82 24 54
-                   Q20 48 28 46 Z"/>
-        </svg>
         <span class="big-btn__label">Contact</span>
       </button>
     </nav>

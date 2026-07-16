@@ -2,10 +2,11 @@
    Theme tokens — the single source of truth for colors.
    ----------------------------------------------------------------------------- */
 :root {
-  --bg:        #C99BCB;
+  --bg:        #E3A3BD;
   --pink:      #F0D4EC;
   --ink:       #302B63;
   --rain-dark: #3E5CC4;
+  --buttons:  #FBE9E9;
   --rain-mid:  #6E8FE6;
   --modal:     #7C84D6;
   --modal-row: #A9AEE9;
@@ -15,12 +16,23 @@
   --shadow-cloud: 0 6px 18px rgba(62, 92, 196, .18);
   --shadow-modal: 0 24px 60px rgba(48, 43, 99, .35);
   --focus-ring:   3px dashed var(--white);
+
+  /* One place to change the display face used across the whole site. */
+  --font-display: "Darumadrop One", "Gochi Hand", cursive;
 }
 
 /* -----------------------------------------------------------------------------
-   Self-hosted display font.
-   Drop gochi-hand.woff2 into /assets/fonts/. If it's absent the fallback is used.
+   Self-hosted display fonts. Darumadrop One is the primary face; Gochi Hand is kept
+   as a hand-lettered fallback. Change the primary once via --font-display above.
+   Both are subset/optimised woff2 files in /assets/fonts/.
    ----------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Darumadrop One";
+  src: url("../assets/fonts/darumadrop-one.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 @font-face {
   font-family: "Gochi Hand";
   src: url("../assets/fonts/gochi-hand.woff2") format("woff2");
@@ -59,7 +71,7 @@ img, svg { display: block; max-width: 100%; }
 button { font: inherit; color: inherit; }
 
 /* -----------------------------------------------------------------------------
-   Sky — decorative drifting clouds anchored to the viewport edges
+   Sky — painted clouds behind the column (static; only the drops move)
    ----------------------------------------------------------------------------- */
 .sky {
   position: fixed;
@@ -71,16 +83,20 @@ button { font: inherit; color: inherit; }
 
 .sky__cloud {
   position: absolute;
-  fill: var(--white);
-  opacity: .78;
-  filter: drop-shadow(0 4px 10px rgba(48, 43, 99, .12));
-  will-change: transform;
+  height: auto;
+  filter: drop-shadow(0 6px 14px rgba(48, 43, 99, .12));
 }
 
-.sky__cloud--tl { top: 3%;   left:  -6%; width: min(38vw, 320px); }
-.sky__cloud--tr { top: 12%;  right: -8%; width: min(30vw, 260px); }
-.sky__cloud--bl { bottom:16%; left:  -5%; width: min(28vw, 240px); }
-.sky__cloud--br { bottom: 4%; right: -6%; width: min(34vw, 300px); }
+/* Four clouds frame the centred column, one per corner. The two look-alike puffy
+   clouds sit on opposite diagonal corners (top-left / lower-right), each a different
+   size and one flipped, so the pair never reads as a repeat; the two wider clouds
+   take the other diagonal. They sit almost flush to each edge (only a hair inset) so
+   the whole cloud shows, and stay in the top/bottom bands so they never crowd the
+   name or buttons. */
+.sky__cloud--left        { top: 8%;     left:  2%;  width: min(26vw, 150px); }
+.sky__cloud--right       { top: 13%;    right: 2%;  width: min(34vw, 200px); }
+.sky__cloud--lower-left  { bottom: 9%;  left:  2%;  width: min(28vw, 165px); transform: scaleX(-1); opacity: .95; }
+.sky__cloud--lower-right { bottom: 14%; right: 2%;  width: min(24vw, 140px); transform: scaleX(-1); opacity: .92; }
 
 /* -----------------------------------------------------------------------------
    Main column
@@ -102,30 +118,33 @@ main {
    ----------------------------------------------------------------------------- */
 .name-cloud {
   position: relative;
-  width: 100%;
-  margin: 0 0 -4px;
+  width: min(84%, 340px);
+  margin: 0 auto -6px;
 }
 
-.name-cloud__svg {
+.name-cloud__bg {
   width: 100%;
   height: auto;
-  fill: var(--pink);
   filter: drop-shadow(var(--shadow-cloud));
 }
 
 .name-cloud__name {
   position: absolute;
-  inset: 0;
+  left: 0;
+  right: -7px;
+  /* The painted cloud is a little bottom-heavy, so its visual centre sits at ~55%
+     of the image, not 50%. Pin the text's own middle there for a true centre. */
+  top: 55%;
+  transform: translateY(-50%) rotate(-2deg);
   display: grid;
   place-items: center;
-  font-family: "Gochi Hand", "Marker Felt", "Segoe Script", cursive;
+  padding-inline: 15%;
+  font-family: var(--font-display);
   font-weight: 400;
-  color: var(--ink);
-  font-size: clamp(2rem, 8.2vw, 3.2rem);
+  color: #869CE4;
+  font-size: clamp(2rem, 8.4vw, 3.1rem);
   line-height: 1;
   letter-spacing: .01em;
-  padding: 0 16% 4%;
-  transform: rotate(-2deg);
 }
 
 /* -----------------------------------------------------------------------------
@@ -133,30 +152,32 @@ main {
    ----------------------------------------------------------------------------- */
 .rain {
   position: relative;
-  width: 62%;
-  max-width: 220px;
-  height: 60px;
-  margin: -6px auto 0;
+  width: min(64%, 206px);
+  height: 72px;
+  margin: 2px auto 0;
 }
 
-.rain__drop {
+/* Each drop is one painted frame that floats straight down and back up. */
+.drop {
   position: absolute;
-  top: -4px;
-  width: 14px;
-  height: 22px;
-  will-change: transform, opacity;
+  top: 0;
+  will-change: transform;
 }
+.drop--left  { left: 5%; top:-15px; }
+.drop--right { right: 5%; top:-15px; }
+.drop--mid   { left: 50%; margin-left: -11px; top: 24px; }  /* centred, hangs a touch lower */
 
-.rain__drop--1 { left: 14%;  fill: var(--rain-mid); }
-.rain__drop--2 { left: 46%;  fill: var(--rain-dark); }
-.rain__drop--3 { left: 78%;  fill: var(--rain-mid); }
+/* .drop__f { height: auto; } */
+.drop--left  .drop__f,
+.drop--right .drop__f { width: 26px; }
+.drop--mid   .drop__f { width: 22px; }
 
 /* -----------------------------------------------------------------------------
    Role subtitle
    ----------------------------------------------------------------------------- */
 .role {
   margin: 4px 0 2px;
-  font-family: "Gochi Hand", "Marker Felt", "Segoe Script", cursive;
+  font-family: var(--font-display);
   font-size: clamp(1.4rem, 5.4vw, 1.9rem);
   color: var(--white);
   line-height: 1;
@@ -209,39 +230,26 @@ main {
 }
 
 .big-btn {
-  position: relative;
-  display: block;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-  text-decoration: none;
-  color: var(--white);
-  border-radius: 22px;
-  transition: transform 180ms ease;
-}
-
-.big-btn__shape {
-  width: 100%;
-  height: auto;
-  filter: drop-shadow(0 6px 14px rgba(48, 43, 99, .22));
-}
-
-.big-btn--portfolio .big-btn__shape { fill: var(--rain-dark); }
-.big-btn--contact   .big-btn__shape { fill: var(--rain-mid);  }
-
-.big-btn__label {
-  position: absolute;
-  inset: 0;
   display: grid;
   place-items: center;
-  pointer-events: none;
-  font-family: "Gochi Hand", "Marker Felt", "Segoe Script", cursive;
-  font-size: clamp(1.4rem, 5vw, 1.75rem);
-  line-height: 1;
-  color: var(--white);
-  padding-bottom: 6%;
+  min-height: 62px;
+  padding: 14px 24px;
+  border: 0;
+  background: var(--buttons);
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 20px;
+  box-shadow: 0 6px 14px rgba(101, 98, 124, 0.22);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.big-btn__label {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 2.5rem);
+  line-height: 0.1;
+  color: #485EBB;
   letter-spacing: .02em;
+  transform: translateY(-7px);
 }
 
 /* -----------------------------------------------------------------------------
@@ -249,7 +257,7 @@ main {
    ----------------------------------------------------------------------------- */
 .commissions {
   margin: 6px 0 0;
-  font-family: "Gochi Hand", "Marker Felt", cursive;
+  font-family: var(--font-display);
   font-size: 1rem;
   color: var(--white);
   opacity: .9;
@@ -311,7 +319,7 @@ main {
   background: transparent;
   border: 0;
   padding: 6px 10px;
-  font-family: "Gochi Hand", cursive;
+  font-family: var(--font-display);
   font-size: 26px;
   line-height: 1;
   color: var(--white);
@@ -321,7 +329,7 @@ main {
 
 .modal__title {
   margin: 4px 0 18px;
-  font-family: "Gochi Hand", "Marker Felt", cursive;
+  font-family: var(--font-display);
   font-weight: 400;
   font-size: 1.55rem;
   text-align: center;
@@ -346,7 +354,7 @@ main {
   color: var(--modal-ink);
   border-radius: 16px;
   text-decoration: none;
-  font-family: "Gochi Hand", "Marker Felt", cursive;
+  font-family: var(--font-display);
   font-size: 1.2rem;
   transition: transform 160ms ease;
 }
@@ -362,10 +370,9 @@ main {
   place-items: center;
   overflow: hidden;
   font-size: 12px;
-  border: 2px solid var(--white);
 }
 
-.modal__avatar img { width: 100%; height: 100%; object-fit: cover; }
+.modal__avatar img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
 .modal__label { display: flex; flex-direction: column; gap: 2px; }
 .modal__handle { font-size: .95rem; opacity: .75; }
@@ -374,14 +381,12 @@ main {
    Motion — everything transform/opacity, wrapped for reduced-motion users
    ----------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: no-preference) {
-  .sky__cloud--tl { animation: drift-a 42s ease-in-out infinite alternate; }
-  .sky__cloud--tr { animation: drift-b 48s ease-in-out infinite alternate; }
-  .sky__cloud--bl { animation: drift-c 54s ease-in-out infinite alternate; }
-  .sky__cloud--br { animation: drift-b 50s ease-in-out infinite alternate; }
-
-  .rain__drop--1 { animation: fall 1.7s ease-in 0s    infinite; }
-  .rain__drop--2 { animation: fall 1.9s ease-in .45s  infinite; }
-  .rain__drop--3 { animation: fall 1.8s ease-in .95s  infinite; }
+  /* Two-frame stepped boil, like a hand-drawn loop. The sides and the middle drop
+     always move opposite each other, and swap every frame with a hard cut (no tween):
+     frame 1 -> sides down / middle up;  frame 2 -> sides up / middle down. */
+  .drop--left,
+  .drop--right { animation: step-side 1s linear infinite; }
+  .drop--mid   { animation: step-mid  1s linear infinite; }
 
   .social-btn:hover, .social-btn:focus-visible,
   .big-btn:hover,   .big-btn:focus-visible,
@@ -391,25 +396,10 @@ main {
   }
 }
 
-@keyframes drift-a {
-  from { transform: translate3d(0, 0, 0) rotate( .5deg); }
-  to   { transform: translate3d(28px, -14px, 0) rotate(-1deg); }
-}
-@keyframes drift-b {
-  from { transform: translate3d(0, 0, 0) rotate(-.6deg); }
-  to   { transform: translate3d(-22px, 14px, 0) rotate(1deg); }
-}
-@keyframes drift-c {
-  from { transform: translate3d(0, 0, 0) rotate(0deg); }
-  to   { transform: translate3d(18px, -18px, 0) rotate(-.7deg); }
-}
-
-@keyframes fall {
-  0%   { transform: translate3d(0, -6px, 0) scale(.9); opacity: 0; }
-  15%  { opacity: 1; }
-  80%  { opacity: 1; }
-  100% { transform: translate3d(0, 64px, 0) scale(1); opacity: 0; }
-}
+/* Two held frames. The .001% gap makes 50% a hard cut, not a smooth tween, so the
+   drops snap between positions like cel frames rather than gliding. */
+@keyframes step-side { 0%, 49.999% { transform: translateY(4px) }  50%, 100% { transform: translateY(-4px) } }
+@keyframes step-mid  { 0%, 49.999% { transform: translateY(-4px) } 50%, 100% { transform: translateY(4px) } }
 
 @keyframes wobble {
   0%   { transform: rotate(0)     scale(1); }
@@ -424,11 +414,13 @@ main {
    ----------------------------------------------------------------------------- */
 @media (min-width: 720px) {
   main { max-width: 460px; }
-  .rain { height: 68px; }
+  .rain { height: 76px; }
 }
 
 @media (min-width: 1100px) {
-  .sky__cloud--tl { width: 320px; }
-  .sky__cloud--br { width: 300px; }
+  .sky__cloud--left        { width: 138px; }
+  .sky__cloud--right       { width: 190px; }
+  .sky__cloud--lower-left  { width: 158px; }
+  .sky__cloud--lower-right { width: 132px; }
 }
 

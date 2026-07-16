@@ -3,15 +3,17 @@
 
 export const content = {
   // Display name — she goes by "Ani" (official name Ana Khidasheli).
-  name: "Ani Khidasheli",
+  name: "ANIKO",
   role: "2D Animator",
 
   socials: {
     // One row is rendered per entry below. Two accounts => the modal shows the
     // two-row chooser from the sketch. Remove one to collapse back to a single row.
     instagram: [
-      { label: "Main Account", handle: "@bridgeli__", url: "https://www.instagram.com/bridgeli__" },
-      { label: "Art Account",  handle: "@anykk_o",    url: "https://www.instagram.com/anykk_o" }
+      // avatar: a square profile image under assets/img/. If the file is missing the
+      // row falls back to the account's initial, so the site never shows a broken image.
+      { label: "Main Account", handle: "@bridgeli__", url: "https://www.instagram.com/bridgeli__", avatar: "assets/img/ig-bridgeli.png" },
+      { label: "Art Account",  handle: "@anykk_o",    url: "https://www.instagram.com/anykk_o",    avatar: "assets/img/ig-anykk.png" }
     ],
     linkedin: "https://www.linkedin.com/in/ana-khidasheli-0a2a7337a/"
   },

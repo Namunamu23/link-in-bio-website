@@ -37,7 +37,7 @@ Colors are CSS custom properties in one `:root` block at the top of [`styles/mai
 | Profile picture | `assets/img/profile.png` | Shown in each Instagram row inside the modal. Wire it in `scripts/main.js` where `modal__avatar` is created. |
 | OG cover | `assets/img/og-cover.png` | 1200×630. A placeholder is included; replace it with the real cover art. |
 | Real SVG illustrations | `assets/illustrations/` | Paste the path into the existing inline `<svg>` in `index.html` or swap for an `<img>`. |
-| Display font | `assets/fonts/gochi-hand.woff2` | Included. Swap for a licensed font by replacing the file and updating `@font-face` in `main.css`. |
+| Display font | `assets/fonts/darumadrop-one.woff2` | Darumadrop One (primary), Gochi Hand kept as fallback. Change the face via the `--font-display` variable in `main.css`. |
 
 ## Structure
 
