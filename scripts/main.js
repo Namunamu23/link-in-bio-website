@@ -12,7 +12,8 @@ const $ = (selector, root = document) => {
 /* -----------------------------------------------------------------------------
    Hydrate the page from data/content.js
    ----------------------------------------------------------------------------- */
-document.title = `${content.name} — ${content.role}`;
+/* Page title and social/meta tags live in index.html <head> so crawlers and link
+   unfurlers see them without running JS. Only the on-page body copy is hydrated here. */
 document.documentElement.lang = content.meta.locale || "en";
 
 $("[data-name]").textContent = content.name;

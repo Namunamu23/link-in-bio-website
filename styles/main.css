@@ -179,7 +179,7 @@ main {
   margin: 4px 0 2px;
   font-family: var(--font-display);
   font-size: clamp(1.4rem, 5.4vw, 1.9rem);
-  color: var(--white);
+  color: White;
   line-height: 1;
   letter-spacing: .02em;
   transform: rotate(-1deg);
@@ -200,7 +200,7 @@ main {
   border: 0;
   padding: 8px;
   cursor: pointer;
-  color: var(--white);
+  color: white;
   display: inline-grid;
   place-items: center;
   border-radius: 12px;

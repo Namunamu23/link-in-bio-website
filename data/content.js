@@ -43,7 +43,7 @@ export const content = {
     // TODO set to the real deployed URL once the domain is connected (Stage 10).
     canonical: "https://REPLACE.example.com/",
     ogImage: "assets/img/og-cover.png",
-    themeColor: "#C99BCB",
+    themeColor: "#E3A3BD",
     locale: "en"
   }
 };
