@@ -1,0 +1,434 @@
+/* -----------------------------------------------------------------------------
+   Theme tokens — the single source of truth for colors.
+   ----------------------------------------------------------------------------- */
+:root {
+  --bg:        #C99BCB;
+  --pink:      #F0D4EC;
+  --ink:       #302B63;
+  --rain-dark: #3E5CC4;
+  --rain-mid:  #6E8FE6;
+  --modal:     #7C84D6;
+  --modal-row: #A9AEE9;
+  --modal-ink: #35399A;
+  --white:     #FDFCFF;
+
+  --shadow-cloud: 0 6px 18px rgba(62, 92, 196, .18);
+  --shadow-modal: 0 24px 60px rgba(48, 43, 99, .35);
+  --focus-ring:   3px dashed var(--white);
+}
+
+/* -----------------------------------------------------------------------------
+   Self-hosted display font.
+   Drop gochi-hand.woff2 into /assets/fonts/. If it's absent the fallback is used.
+   ----------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Gochi Hand";
+  src: url("../assets/fonts/gochi-hand.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* -----------------------------------------------------------------------------
+   Reset
+   ----------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  display: grid;
+  place-items: center;
+  padding: clamp(20px, 5vw, 40px) 20px;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img, svg { display: block; max-width: 100%; }
+
+button { font: inherit; color: inherit; }
+
+/* -----------------------------------------------------------------------------
+   Sky — decorative drifting clouds anchored to the viewport edges
+   ----------------------------------------------------------------------------- */
+.sky {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.sky__cloud {
+  position: absolute;
+  fill: var(--white);
+  opacity: .78;
+  filter: drop-shadow(0 4px 10px rgba(48, 43, 99, .12));
+  will-change: transform;
+}
+
+.sky__cloud--tl { top: 3%;   left:  -6%; width: min(38vw, 320px); }
+.sky__cloud--tr { top: 12%;  right: -8%; width: min(30vw, 260px); }
+.sky__cloud--bl { bottom:16%; left:  -5%; width: min(28vw, 240px); }
+.sky__cloud--br { bottom: 4%; right: -6%; width: min(34vw, 300px); }
+
+/* -----------------------------------------------------------------------------
+   Main column
+   ----------------------------------------------------------------------------- */
+main {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(14px, 3.5vw, 22px);
+}
+
+/* -----------------------------------------------------------------------------
+   Name in a pale-pink cloud
+   ----------------------------------------------------------------------------- */
+.name-cloud {
+  position: relative;
+  width: 100%;
+  margin: 0 0 -4px;
+}
+
+.name-cloud__svg {
+  width: 100%;
+  height: auto;
+  fill: var(--pink);
+  filter: drop-shadow(var(--shadow-cloud));
+}
+
+.name-cloud__name {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: "Gochi Hand", "Marker Felt", "Segoe Script", cursive;
+  font-weight: 400;
+  color: var(--ink);
+  font-size: clamp(2rem, 8.2vw, 3.2rem);
+  line-height: 1;
+  letter-spacing: .01em;
+  padding: 0 16% 4%;
+  transform: rotate(-2deg);
+}
+
+/* -----------------------------------------------------------------------------
+   Rain — three drops staggered under the name cloud
+   ----------------------------------------------------------------------------- */
+.rain {
+  position: relative;
+  width: 62%;
+  max-width: 220px;
+  height: 60px;
+  margin: -6px auto 0;
+}
+
+.rain__drop {
+  position: absolute;
+  top: -4px;
+  width: 14px;
+  height: 22px;
+  will-change: transform, opacity;
+}
+
+.rain__drop--1 { left: 14%;  fill: var(--rain-mid); }
+.rain__drop--2 { left: 46%;  fill: var(--rain-dark); }
+.rain__drop--3 { left: 78%;  fill: var(--rain-mid); }
+
+/* -----------------------------------------------------------------------------
+   Role subtitle
+   ----------------------------------------------------------------------------- */
+.role {
+  margin: 4px 0 2px;
+  font-family: "Gochi Hand", "Marker Felt", "Segoe Script", cursive;
+  font-size: clamp(1.4rem, 5.4vw, 1.9rem);
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: .02em;
+  transform: rotate(-1deg);
+}
+
+/* -----------------------------------------------------------------------------
+   Social icons row
+   ----------------------------------------------------------------------------- */
+.socials {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-btn {
+  background: transparent;
+  border: 0;
+  padding: 8px;
+  cursor: pointer;
+  color: var(--white);
+  display: inline-grid;
+  place-items: center;
+  border-radius: 12px;
+  transition: transform 180ms ease;
+}
+
+.social-btn svg {
+  width: 40px;
+  height: 40px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* -----------------------------------------------------------------------------
+   Two big hand-drawn buttons stacked
+   ----------------------------------------------------------------------------- */
+.big-buttons {
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 2px;
+}
+
+.big-btn {
+  position: relative;
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 22px;
+  transition: transform 180ms ease;
+}
+
+.big-btn__shape {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 6px 14px rgba(48, 43, 99, .22));
+}
+
+.big-btn--portfolio .big-btn__shape { fill: var(--rain-dark); }
+.big-btn--contact   .big-btn__shape { fill: var(--rain-mid);  }
+
+.big-btn__label {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  font-family: "Gochi Hand", "Marker Felt", "Segoe Script", cursive;
+  font-size: clamp(1.4rem, 5vw, 1.75rem);
+  line-height: 1;
+  color: var(--white);
+  padding-bottom: 6%;
+  letter-spacing: .02em;
+}
+
+/* -----------------------------------------------------------------------------
+   Optional commissions status
+   ----------------------------------------------------------------------------- */
+.commissions {
+  margin: 6px 0 0;
+  font-family: "Gochi Hand", "Marker Felt", cursive;
+  font-size: 1rem;
+  color: var(--white);
+  opacity: .9;
+}
+
+/* -----------------------------------------------------------------------------
+   Focus states
+   ----------------------------------------------------------------------------- */
+:focus { outline: 0; }
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 4px;
+  border-radius: 18px;
+}
+
+/* -----------------------------------------------------------------------------
+   Modal — accessible dialog for Instagram accounts
+   ----------------------------------------------------------------------------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(48, 43, 99, .55);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+
+.modal[data-open="true"] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal__panel {
+  position: relative;
+  width: min(100%, 360px);
+  padding: 34px 22px 26px;
+  background: var(--modal);
+  color: var(--white);
+  border-radius: 26px;
+  box-shadow: var(--shadow-modal);
+  transform: scale(.94);
+  opacity: .0;
+  transition: transform 220ms cubic-bezier(.2,.9,.3,1.1), opacity 180ms ease;
+}
+
+.modal[data-open="true"] .modal__panel {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.modal__close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: transparent;
+  border: 0;
+  padding: 6px 10px;
+  font-family: "Gochi Hand", cursive;
+  font-size: 26px;
+  line-height: 1;
+  color: var(--white);
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.modal__title {
+  margin: 4px 0 18px;
+  font-family: "Gochi Hand", "Marker Felt", cursive;
+  font-weight: 400;
+  font-size: 1.55rem;
+  text-align: center;
+  letter-spacing: .01em;
+}
+
+.modal__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--modal-row);
+  color: var(--modal-ink);
+  border-radius: 16px;
+  text-decoration: none;
+  font-family: "Gochi Hand", "Marker Felt", cursive;
+  font-size: 1.2rem;
+  transition: transform 160ms ease;
+}
+
+.modal__avatar {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--modal-ink);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  font-size: 12px;
+  border: 2px solid var(--white);
+}
+
+.modal__avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+.modal__label { display: flex; flex-direction: column; gap: 2px; }
+.modal__handle { font-size: .95rem; opacity: .75; }
+
+/* -----------------------------------------------------------------------------
+   Motion — everything transform/opacity, wrapped for reduced-motion users
+   ----------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  .sky__cloud--tl { animation: drift-a 42s ease-in-out infinite alternate; }
+  .sky__cloud--tr { animation: drift-b 48s ease-in-out infinite alternate; }
+  .sky__cloud--bl { animation: drift-c 54s ease-in-out infinite alternate; }
+  .sky__cloud--br { animation: drift-b 50s ease-in-out infinite alternate; }
+
+  .rain__drop--1 { animation: fall 1.7s ease-in 0s    infinite; }
+  .rain__drop--2 { animation: fall 1.9s ease-in .45s  infinite; }
+  .rain__drop--3 { animation: fall 1.8s ease-in .95s  infinite; }
+
+  .social-btn:hover, .social-btn:focus-visible,
+  .big-btn:hover,   .big-btn:focus-visible,
+  .modal__row:hover, .modal__row:focus-visible,
+  .modal__close:hover, .modal__close:focus-visible {
+    animation: wobble 540ms ease;
+  }
+}
+
+@keyframes drift-a {
+  from { transform: translate3d(0, 0, 0) rotate( .5deg); }
+  to   { transform: translate3d(28px, -14px, 0) rotate(-1deg); }
+}
+@keyframes drift-b {
+  from { transform: translate3d(0, 0, 0) rotate(-.6deg); }
+  to   { transform: translate3d(-22px, 14px, 0) rotate(1deg); }
+}
+@keyframes drift-c {
+  from { transform: translate3d(0, 0, 0) rotate(0deg); }
+  to   { transform: translate3d(18px, -18px, 0) rotate(-.7deg); }
+}
+
+@keyframes fall {
+  0%   { transform: translate3d(0, -6px, 0) scale(.9); opacity: 0; }
+  15%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: translate3d(0, 64px, 0) scale(1); opacity: 0; }
+}
+
+@keyframes wobble {
+  0%   { transform: rotate(0)     scale(1); }
+  25%  { transform: rotate(-2deg) scale(1.035); }
+  55%  { transform: rotate(2deg)  scale(1.045); }
+  80%  { transform: rotate(-1deg) scale(1.02); }
+  100% { transform: rotate(0)     scale(1); }
+}
+
+/* -----------------------------------------------------------------------------
+   Layout tweaks for wider viewports — the design is a single centered column
+   ----------------------------------------------------------------------------- */
+@media (min-width: 720px) {
+  main { max-width: 460px; }
+  .rain { height: 68px; }
+}
+
+@media (min-width: 1100px) {
+  .sky__cloud--tl { width: 320px; }
+  .sky__cloud--br { width: 300px; }
+}
+

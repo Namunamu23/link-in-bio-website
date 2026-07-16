@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($headers = @{ \"User-Agent\" = \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\" }; $css = Invoke-WebRequest -Uri \"https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap\" -Headers $headers -UseBasicParsing; $cssText = $css.Content; $cssText)",
+      "PowerShell($headers = @{ \"User-Agent\" = \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" }; $css = Invoke-WebRequest -Uri \"https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap\" -Headers $headers -UseBasicParsing; $cssText = $css.Content; $cssText)",
+      "PowerShell(Get-Item *)",
+      "Bash(py --version)",
+      "Bash(python3 -m http.server 8000 --bind 127.0.0.1)",
+      "Bash(curl -sI http://127.0.0.1:8000/)",
+      "Bash(curl -s http://127.0.0.1:8000/)",
+      "Bash(py -m http.server 8000 --bind 127.0.0.1)",
+      "Bash(curl -sI http://127.0.0.1:8000/scripts/main.js)",
+      "Bash(curl -sI http://127.0.0.1:8000/data/content.js)",
+      "Bash(curl -sI http://127.0.0.1:8000/site.webmanifest)",
+      "Bash(curl -sI http://127.0.0.1:8000/assets/fonts/gochi-hand.woff2)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://127.0.0.1:8000/index.html)",
+      "Bash(curl -s http://127.0.0.1:8000/index.html)"
+    ]
+  }
+}

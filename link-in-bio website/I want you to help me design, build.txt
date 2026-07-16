@@ -1,0 +1,337 @@
+I want you to help me design, build, test, and publish a custom link-in-bio website for my girlfriend, who is a digital artist and 2D animator.
+
+I will attach reference images showing the design and visual style she wants. Treat those images as the primary design reference. Carefully inspect all visible details, including:
+
+* Layout and spacing
+* Typography
+* Colors and gradients
+* Illustrations and decorative elements
+* Buttons, links, cards, and icons
+* Alignment and proportions
+* Desktop and mobile behavior
+* Animations and interactive details
+* The overall artistic mood and personality
+
+## Main objective
+
+Create a polished, responsive, production-ready personal website that presents her artwork, animation work, social media accounts, portfolio links, contact information, and any other links we decide to include.
+
+The result should feel like a professionally designed custom website—not a generic Linktree template or an obviously AI-generated project.
+
+Do not merely imitate the reference images mechanically. Understand the design system behind them and translate it into a functional website while preserving the intended style.
+
+## How I want you to work
+
+Treat this as a complete web-development project rather than giving me a quick code sample.
+
+Work through the project in clear stages:
+
+1. Analyze the reference images and explain what you observe.
+2. Identify any missing information required to build the site correctly.
+3. Research and recommend the most suitable technology stack.
+4. Create the project structure and implementation plan.
+5. Build the website with complete, usable code.
+6. Help me run and test it locally.
+7. Review and improve the design with me.
+8. Optimize accessibility, responsiveness, performance, and SEO.
+9. Help me deploy it.
+10. Help me purchase and connect a custom domain.
+
+Do not jump directly into writing code before analyzing the design and confirming the important content and functionality.
+
+Ask only questions that materially affect the design or implementation. Group the questions together instead of repeatedly interrupting the workflow with one question at a time.
+
+When a minor detail is missing, make a reasonable temporary assumption, clearly label it, and continue. Do not invent personal information, URLs, artwork descriptions, usernames, or contact details.
+
+## Research requirements
+
+Before recommending the implementation, research the current professional approaches used for small portfolio and link-in-bio websites.
+
+Prioritize:
+
+* Official documentation
+* Current browser standards
+* Official framework and library documentation
+* Reliable accessibility and web-performance guidance
+* Current hosting and domain-provider information
+* Well-maintained open-source resources when relevant
+
+Use current information rather than relying on outdated tutorials.
+
+You do not need to research every technology that exists. Research only the options that are realistically relevant to this project, compare them briefly, and select the simplest professional solution that satisfies the requirements.
+
+For factual claims involving current pricing, product limitations, hosting policies, domain renewals, framework versions, or deployment procedures, verify the information online and cite the source.
+
+Clearly distinguish between:
+
+* Verified facts
+* Your professional recommendation
+* Temporary assumptions
+* Decisions that require my approval
+
+## Technology selection
+
+Recommend a technology stack based on the actual needs of the project, not merely because a framework is popular.
+
+The site will probably be mostly static, so avoid unnecessary backend systems, databases, authentication, or complex infrastructure unless the requested features genuinely require them.
+
+Consider options such as:
+
+* Semantic HTML, modern CSS, and JavaScript
+* React, Next.js, Astro, or another suitable framework
+* TypeScript
+* Modern CSS approaches
+* Lightweight animation libraries
+* Static-site generation
+* Image optimization
+* Free or inexpensive hosting platforms
+
+Explain the important tradeoffs in plain English before choosing.
+
+Favor:
+
+* A simple and maintainable structure
+* Fast loading
+* Minimal dependencies
+* Easy deployment
+* Easy future editing
+* Strong mobile support
+* Good accessibility
+* Low or zero recurring hosting costs
+
+Use stable, actively maintained technologies and current official documentation. Do not add libraries when native HTML, CSS, or JavaScript can handle the requirement cleanly.
+
+## Design and originality requirements
+
+The finished site should feel personal to a digital artist and animator.
+
+Avoid common signs of a generic AI-generated website, including:
+
+* Excessive gradients without a design purpose
+* Generic glassmorphism
+* Random glowing elements
+* Overused stock layouts
+* Corporate startup-style language
+* Unnecessary feature sections
+* Placeholder marketing copy
+* Excessive rounded cards
+* Random icons
+* Inconsistent spacing
+* Animations that distract from the artwork
+* Code comments that sound like an AI tutorial
+* Generic variable names and unnecessary abstractions
+
+Instead, create a coherent visual system based on the reference design:
+
+* Consistent spacing
+* Intentional typography
+* Thoughtful responsive behavior
+* Custom visual details
+* Natural microinteractions
+* Clear hierarchy
+* Strong presentation of her artwork
+* Subtle animations that fit a 2D animator’s portfolio
+* A layout that does not feel copied from a standard template
+
+Do not claim that the website was handmade by a human or attempt to misrepresent how it was produced. The goal is simply to create thoughtful, customized, professional-quality work.
+
+## Development requirements
+
+Provide complete code rather than incomplete snippets.
+
+The implementation should include:
+
+* A clear folder and file structure
+* Reusable components where they genuinely improve maintainability
+* Semantic HTML
+* Responsive styling
+* Keyboard navigation
+* Visible focus states
+* Meaningful alt text guidance
+* Appropriate color contrast
+* Reduced-motion support
+* Proper handling of external links
+* Optimized images
+* Sensible loading behavior
+* Social-sharing metadata
+* Basic SEO metadata
+* A favicon or instructions for creating one
+* A custom 404 page when supported by the selected setup
+* Clean and consistent naming
+* No unused dependencies
+* No broken placeholder links
+* No secrets or private information committed to the project
+
+Keep the code understandable for someone who programs but may not be an expert in the selected framework.
+
+For each file you create or modify:
+
+1. State its exact path.
+2. Provide the complete contents when necessary.
+3. Explain briefly what it does.
+4. Explain where I should place supplied images or artwork.
+5. Avoid silently omitting required configuration.
+
+When revising a file, provide either the complete updated file or an unambiguous patch. Do not give scattered fragments that are difficult to combine.
+
+## Content management
+
+Structure the site so I can easily update:
+
+* Her display name
+* Biography
+* Profile image
+* Artwork
+* Showreel or animation reel
+* Social media links
+* Portfolio links
+* Contact email
+* Commission availability
+* Button labels
+* Theme colors
+
+Whenever practical, keep this information in one clearly labeled data or configuration file instead of hardcoding it throughout the project.
+
+Do not publish an email address directly on the website without first explaining spam considerations and reasonable alternatives.
+
+## Animation requirements
+
+Because she is a 2D animator, movement can be part of the website’s identity, but it must remain tasteful and efficient.
+
+Animations should:
+
+* Support the design rather than cover weak layout decisions
+* Remain smooth on ordinary mobile devices
+* Avoid causing layout shifts
+* Respect the user’s reduced-motion preference
+* Avoid blocking access to content
+* Avoid autoplaying loud audio or intrusive video
+* Use lightweight techniques whenever possible
+
+Explain whether CSS animations, the Web Animations API, GSAP, Motion, Lottie, or another option is appropriate before adding a dependency.
+
+## Quality standards
+
+The finished website should:
+
+* Work on current mobile and desktop browsers
+* Look intentional at narrow, medium, and wide screen sizes
+* Load quickly on mobile connections
+* Avoid horizontal scrolling
+* Preserve artwork quality without loading unnecessarily large files
+* Have no obvious console errors
+* Have no broken links
+* Be navigable without a mouse
+* Remain understandable when animations are disabled
+* Use valid metadata and page titles
+* Avoid cumulative layout shift where practical
+* Be easy for me to maintain after deployment
+
+Use tools such as Lighthouse or equivalent browser-development tools to evaluate the completed site. Do not chase a perfect score by damaging the design, but identify and fix meaningful problems.
+
+## Testing and verification
+
+Before describing the project as complete, perform or guide me through a final review covering:
+
+* Mobile responsiveness
+* Desktop layout
+* Keyboard navigation
+* Color contrast
+* Reduced-motion behavior
+* Image sizes and formats
+* Loading performance
+* Broken links
+* Console errors
+* Metadata
+* Contact links
+* Social links
+* Deployment configuration
+* Domain configuration
+* HTTPS
+* The appearance of the live site
+
+Do not simply say that everything should work. Provide concrete testing steps and acknowledge anything that has not actually been tested.
+
+## Hosting and deployment
+
+Recommend a reliable hosting option appropriate for a small static portfolio site.
+
+Prefer free hosting unless there is a clear reason to pay. Compare only the most relevant options, such as GitHub Pages, Cloudflare Pages, Vercel, Netlify, or the hosting option best suited to the chosen framework.
+
+Evaluate:
+
+* Recurring price
+* Custom-domain support
+* HTTPS
+* Deployment process
+* Build limits
+* Ease of updating
+* Reliability
+* Vendor lock-in
+* Any important current limitations
+
+Then guide me through deployment step by step, including:
+
+* Creating the repository
+* Preparing the production build
+* Connecting the repository
+* Configuring build settings
+* Deploying the site
+* Confirming that the live version works
+* Updating the site later
+
+Do not perform an irreversible external action, make a purchase, or publish private information without asking me first.
+
+## Domain requirements
+
+I want to use my own domain.
+
+My preferred domain budget is approximately $15 per year, including renewal when reasonably possible—not merely a discounted first-year price.
+
+When we reach the domain stage:
+
+1. Ask what name and extension we prefer.
+2. Research currently available options.
+3. Show the first-year price and expected renewal price separately.
+4. Identify extra fees or paid privacy features.
+5. Prefer registrars that provide transparent renewal pricing, DNS management, domain locking, WHOIS privacy when supported, and two-factor authentication.
+6. Explain how to connect the domain to the selected hosting provider.
+7. Explain the required DNS records in plain English.
+8. Confirm HTTPS and both root-domain and `www` behavior.
+9. Warn me before any purchase or DNS change.
+
+Do not assume that a domain is available until it has been checked through a current registrar or official domain-search tool.
+
+## Communication style
+
+Use clear, plain English.
+
+Explain technical choices without turning every response into a long beginner tutorial. Be detailed where accuracy matters and concise where the step is straightforward.
+
+Keep the workflow organized and always tell me:
+
+* What stage we are currently working on
+* What has been decided
+* What information is still missing
+* What I need to do next
+* What you will produce next
+
+Do not overwhelm me with ten different implementation choices. Recommend one primary solution and mention alternatives only when they present a meaningful advantage.
+
+## Definition of completion
+
+The project is complete only when we have:
+
+* An approved design direction
+* Finalized content and links
+* A working responsive website
+* Complete source code
+* Locally tested behavior
+* Accessibility and performance checks
+* A deployed live version
+* A connected custom domain
+* HTTPS working correctly
+* Clear instructions for future updates
+* A final checklist confirming what was tested and what may still require monitoring
+
+Begin by examining the attached design references. Then summarize the intended visual style, identify the likely page sections and interactions, and ask me one organized set of the most important questions needed before implementation.

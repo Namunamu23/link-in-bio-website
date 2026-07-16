@@ -1,0 +1,13 @@
+{
+  "name": "Ani Khidasheli — 2D Animator",
+  "short_name": "Ani K.",
+  "description": "Ani Khidasheli — 2D animator and illustrator.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#C99BCB",
+  "theme_color": "#C99BCB",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
