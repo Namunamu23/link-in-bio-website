@@ -34,7 +34,7 @@ Colors are CSS custom properties in one `:root` block at the top of [`styles/mai
 | File | Location | Notes |
 | --- | --- | --- |
 | Portfolio PDF | `portfolio/Portfolio_Ana.pdf` | Update `portfolio.href` in `content.js` if you rename it. |
-| Profile picture | `assets/img/profile.png` | Shown in each Instagram row inside the modal. Wire it in `scripts/main.js` where `modal__avatar` is created. |
+| Instagram avatars | `assets/img/ig-<account>.png` | One square image per account, referenced by `avatar` in `content.js` (e.g. `ig-bridgeli.png`, `ig-anykk.png`). Falls back to the account initial if the file is missing. |
 | OG cover | `assets/img/og-cover.png` | 1200×630. A placeholder is included; replace it with the real cover art. |
 | Real SVG illustrations | `assets/illustrations/` | Paste the path into the existing inline `<svg>` in `index.html` or swap for an `<img>`. |
 | Display font | `assets/fonts/darumadrop-one.woff2` | Darumadrop One (primary), Gochi Hand kept as fallback. Change the face via the `--font-display` variable in `main.css`. |
@@ -70,7 +70,7 @@ Search the repo for `REPLACE` and `TODO`. In particular:
 - All decorative SVG is `aria-hidden="true"`; interactive icon buttons carry an `aria-label`.
 - Modal is `role="dialog"`, `aria-modal="true"`, `aria-labelledby` its title. Opens on click, closes on Esc, backdrop click, or the X. Focus is trapped inside while open and returned to the trigger on close.
 - Motion is wrapped in `@media (prefers-reduced-motion: no-preference)`; the site is fully usable with animations disabled.
-- Colors meet WCAG AA against their backgrounds. Focus outlines are visible on every interactive element.
+- Most colors meet WCAG AA; the white subtitle and social icons on the rose background are the exception (~2:1) and are flagged for a contrast pass. Focus outlines are visible on every interactive element.
 
 ## Deploy (later)
 
