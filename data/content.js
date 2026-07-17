@@ -13,7 +13,7 @@ export const content = {
       // avatar: a square profile image under assets/img/. If the file is missing the
       // row falls back to the account's initial, so the site never shows a broken image.
       { label: "Main Account", handle: "@bridgeli__", url: "https://www.instagram.com/bridgeli__", avatar: "assets/img/ig-bridgeli.png" },
-      { label: "Art Account",  handle: "@anykk_o",    url: "https://www.instagram.com/anykk_o",    avatar: "assets/img/ig-anykk.png" }
+      { label: "Art Account",  handle: "@anik__o",    url: "https://www.instagram.com/anik__o",    avatar: "assets/img/ig-anykk.png" }
     ],
     linkedin: "https://www.linkedin.com/in/ana-khidasheli-0a2a7337a/"
   },
