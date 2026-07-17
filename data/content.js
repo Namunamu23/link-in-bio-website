@@ -39,7 +39,7 @@ export const content = {
   commissionsOpen: false,
 
   meta: {
-    description: "Ani Khidasheli — 2D animator and illustrator.",
+    description: "Ani Khidasheli - 2D Animator / Multidisciplinary Artist.",
     canonical: "https://aniko.space/",
     ogImage: "assets/img/og-cover.png",
     themeColor: "#E3A3BD",
