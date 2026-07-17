@@ -328,7 +328,7 @@ main {
 }
 
 .modal__title {
-  margin: 4px 0 18px;
+  margin: 4px 0 17px;
   font-family: var(--font-display);
   font-weight: 400;
   font-size: 1.55rem;
